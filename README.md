@@ -1,4 +1,4 @@
-## php
+# php
 ---
 FUNÇÃO QUE VAI SOMAR...
 - NUMERO 1 
