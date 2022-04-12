@@ -154,6 +154,21 @@ RESULTADO:
 - A SOMA DO NUMERO 1 E NUMERO 2 
 
 O operador básico de atribuição é "=". A sua primeira inclinação deve ser a de pensar nisto como "é igual". Não. Isto quer dizer, na verdade, que o operando da esquerda recebe o valor da expressão da direita (ou seja, "é definido para").
+
+
+- ## function
+
+Parâmetros: Definição normal
+
+function !nomedafunçao!(parâmetros que eu quero criando variaveis) {
+
+}
+
+**Essa função recebe os parametros (n1 e n2) e logo após inserir uma nova variável, depois disso o return é a saida da função, então inseri a variável $total.**
+
+- Agora utilizamos a função, vamos armazenar uma variável com descrição **$soma**. Logo após utilizamos a nossa função **somar()** os valores de **n1 e n2** ficariam assim **$soma = somar(10 , 5);** a variavel **$soma** vai armazenar a função. 
+Agora imprimimos o valor da variavel que foi armazenada **echo "Total: ". $soma** .
+
 ```
 function somar( $n1, $n2 ){
     $total = $n1 + $n2;
@@ -164,14 +179,66 @@ $soma = somar(10 , 20);
 echo 'TOTAL: '.$soma;
 ```
 
-- ## function
+- Tudo que for fazer dentro da função permanece na função inclusive definição de variáveis.
 
-Parâmetros: Definição normal
-
-function !nomedafunçao!(parâmetros que eu quero criando variaveis) {
-
+## Função de 3 parâmetros
+- para deixar o parâmetro opcional em uma função definimos um valora padrão para ele.
+```
+function somar($n1, $n2, $n3 = 0){
+   $total = $n1 + $n2 + $n3;
+   return $total;
 }
 
+$x = somar(5, 3);
+$y = somar(6, 7, 6);
+$w = somar($x, $y);
+echo $w; 
+```
+- o **n1** vai ser o valor atribuido unico nesse caso.
+
+```
+function somar($n1, $n2 =0, $n3 = 0){
+   $total = $n1 + $n2 + $n3;
+   return $total;
+}
+
+$x = somar(5, 3);
+$y = somar(6, 7, 6);
+$w = somar($x, $y);
+echo $w;
+```
+- Para deixar esse **n1** em um tipo de dado especifico antes do nome da variavel inserir um tipo que vou receber da variavel se eu quero um **int=inteiro** quando definir um tipo de dado só vai executar se entrar algum determinado tipo de dado.
+```
+function somar(int $n1, int $n2=0, int $n3 = 0){
+   $total = $n1 + $n2 + $n3;
+   return $total;
+}
+
+$x = somar(5, 3);
+$y = somar(6, 7, 6);
+$w = somar($x, $y);
+echo $w;
+```
+## Parâmetros: Referência ou Valor 
+
+```
+function somar($n1, $n2){
+    $total = $n1 + $n2;
+    return $total;
+}
+
+$x = 3;
+$y = 2;
+$soma = somar($x , $y);
+echo "total ".$soma; 
+```
+- Quando mandei somar o meu **$x**, ele não mandou a variavel **$x** ele mandou o valor dessa variavel **$x**. Então eu passei um parâmetro por valor então eu mandei **3**, e no valor **y** foi o número **2**.
+
+- Quando entrou na função o **3** assumiu o **n1** e o **2** assumiu o **n2**, retornoei o resultado que armazenei em **$soma** e imprimi ela.
+
+## Variável por referência
+
+---
 ```
 function subSequente(){
     for($q=0;$q<=10;$q++){
@@ -197,6 +264,7 @@ function subSequente(){
 subSequente();
 subSequente();
 ```
+
 
 
 
