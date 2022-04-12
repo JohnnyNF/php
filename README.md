@@ -264,7 +264,17 @@ function subSequente(){
 subSequente();
 subSequente();
 ```
+```
+function somar ($x1, $y1, &$total){
+    $total = $x1 + $y1;
+}
 
+$x1 = 10;
+$b3 = 8;
+$w1 = 0;
+somar($x1, $b3,$w1);
+echo $w1;
+```
 
 
 
