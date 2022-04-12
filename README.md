@@ -238,7 +238,32 @@ echo "total ".$soma;
 
 ## Variável por referência
 
----
+
+## Função Anônimas
+
+É quando não tem um nome, e no final tem que inserir ponto e virgula faz parte da definição da variavel
+
+
+```
+$variavel function (caracter $oque eu quero) {
+ return $oque ue quero 
+};
+
+$o nome que vai receber = $variavel;
+
+echo $o nome que vai receber();
+
+```
+Posso passar essa função para outra variavel qualquer e usar normalmente
+```
+$dizimo = function( int $valor) {
+  return $valor * 0.1;
+};
+
+$funcao = $dizimo;
+echo $dizimo(90);
+```
+Podemos passar essa função com um parâmetro
 ```
 function subSequente(){
     for($q=0;$q<=10;$q++){
