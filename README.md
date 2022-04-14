@@ -263,18 +263,15 @@ $dizimo = function( int $valor) {
 $funcao = $dizimo;
 echo $dizimo(90);
 ```
-Podemos passar essa função com um parâmetro
+
+## Funções Arrow 7.4 >
+
+ - Nós inserimos fn() os parametros a arrow function só tem como fazer uma expressão dentro dela. Ela é inserida apenas quando tem uma função só sendo, executada. Coloque os parâmetros quanto quer que seja,logo após inseri um simbolo **=>** e depoiscoloque a expressão que estamos executando   
+
 ```
-function subSequente(){
-    for($q=0;$q<=10;$q++){
-        echo $q."<br/>";
-    }
+$dizimo = fn($valor) => $valor * 0.1;  
 
-    echo "<hr/>";
-}
-
-subSequente();
-subSequente();
+echo $dizimo(90);
 ```
 
 ```
@@ -289,6 +286,21 @@ function subSequente(){
 subSequente();
 subSequente();
 ```
+---
+```
+function subSequente(){
+    for($q=0;$q<=10;$q++){
+        echo $q."<br/>";
+    }
+
+    echo "<hr/>";
+}
+
+subSequente();
+subSequente();
+```
+---
+ 
 ```
 function somar ($x1, $y1, &$total){
     $total = $x1 + $y1;
@@ -300,6 +312,70 @@ $w1 = 0;
 somar($x1, $b3,$w1);
 echo $w1;
 ```
+
+### Funções Nativas de Matematica
+ 
+função absoluto **abs()**.
+
+função **pi()**.
+
+função **floor($variavel) - chão pra baixo**
+
+função **ceil($numero) - pra cima** ;
+
+```
+$numero = 12.45 
+echo round($numero, 2)
+```
+
+$aleatorio = rand(3,9); **Vai vir numero aleatorio do que você deseja.**
+
+$lista = [1,4,7,9,2];
+**echo max($lista);**
+
+### Funções Nativas string (1/2)
+```
+$nomeSujo = '   Johnny     ';
+$nomeLimpo = trim($nomeSujo);
+
+echo "Nome Sujo: ".strlen($nomeSujo)."<br/>"; 
+echo "Nome Limpo: ".strlen($nomeLimpo);
+```
+length = extensão
+-strlen = conta a quantidade de caractere.
+trim = retira os espaços desnecessarios 
+
+```
+$nome = 'Bonieky Lacerda';
+
+echo strtolower($nome);
+```
+strtolower = para deixar o nome minusculo
+
+strtoupper = para letra maiuscula
+
+```
+
+$nome = 'Bonieky Lacerda';
+
+$nomeAlterado = str_replace('Lacerda', 'Silva', $nome);
+
+```
+**procure por = Lacerda**
+
+**Substitua por = Silva**
+
+**Nessa variavel =$nome**
+
+
+```
+$nomeCompleto = 'Bonieky Lacerda';
+
+$nome = substr($nomeCompleto, 0, 5); ==> a quantidade que eue quero pegar 
+
+echo $nome;
+```
+
 
 
 
