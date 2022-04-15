@@ -377,5 +377,25 @@ echo $nome;
 ```
 
 
+### Funções Nativas de String (2/2)
+
+- função explode tem 2 parâmetros, oque irá procurar para ser o divisor entre cada uma das palavras etc. No nosso caso é um espaço ''
+o segundo parâmetro é propria string.
+
+```
+$nomeCompleto = 'bonieky lacerda leal';
+
+$nome = explode('',$nomeCompleto);
+
+print_r($nome);
+```
+
+- Exibir o numero formatado direitinho.  
+
+```
+$numero = 12913.12
+
+echo number_format($numero,quantidade decimal que vai ter, 'terceiro parametro é optacional', 'quarto parametro simbolos para separar os milhares )
+```
 
 
