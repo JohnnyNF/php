@@ -398,4 +398,123 @@ $numero = 12913.12
 echo number_format($numero,quantidade decimal que vai ter, 'terceiro parametro é optacional', 'quarto parametro simbolos para separar os milhares )
 ```
 
+### Function Nativas Array (1/2)
+
+```
+$lista = ['nome1', 'nome2', 'nome3', 'nome4'];
+
+echo "total".count($lista)
+```
+
+- Vai contar a quantidade ela vai dar um numero real
+
+---
+```
+$lista = ['bonieky','pedro', 'paulo', 'josé', 'francisca','paula'];
+
+$aprovados = ['bonieky', 'pedro', ''francisca];
+
+$reprovados = array_diff($lista, quem eu quero fazer a comparação ---> $aprovados);
+
+print_r($reprovados);
+```
+
+### array_diff
+- Existe uma função do PHP, que ela vai pegar a difença entre o primeiro e o segundo e ela vai gerar um novo array, com os item que não estão na primeira lista. Os itens da primeira lista que não estão na segunda lista.
+ 
+
+### array_filter
+- Ele vai filtrar no array
+
+```
+$numeros = [10, 20, 24, 91, 18];
+
+$filtrados = array_filter($numeros, function($item){
+    if($item < 20) {
+    return true;
+    }else {
+        return false;
+    }
+});
+
+print_r($filtrados);
+```
+
+- Callback tem que criar uma função e mandar ele vai fazer um loop no parametro da função callback ele ira receber o numero especifico ele vai fazer um loop em cada um dos itens e ele vai receber a varivel item. e vamos ter que retornar true oyu false. 
+
+- Nesse exercicos quero fazer também então quero gerar um novo array de filtrados só com os numeros que estão abaixo de 20 ou 30. Ai eu verifico.
+
+### array_pop 
+- Remove o ultimo array.
+
+- Não precisa armazenar ele em variavel recebe o parâmetro por referencia ele vai fazer alteração no proprio item que mandar inserimos a variavel que desejamos e vai remover o ultimo item do array.
+
+```
+$numero = [10, 20, 24, 91, 18];
+
+array_pop($numeros);
+
+print_r($numero);
+```
+
+### array_shift 
+
+- Remove o primeiro array.
+
+```
+$numero = [10, 20, 24, 91, 18];
+
+array_shift($numeros);
+
+print_r($numero);
+```
+### in_array
+- Ele vai procurar se existe algo na varivel solicitada.
+```
+$numero = [10, 20, 24, 91, 18];
+
+if(in_array(90, $numeros)) {
+    echo 'EXITE';
+}else {
+    echo 'NÃO EXISTE';
+}
+```
+
+### array_search
+
+- Ele vai fazer um busca a posição que está o item especifico
+```
+$numero = [10, 20, 24, 91, 18];
+
+$pos = array_search(91, $numeros);
+
+echo $pos;
+```
+
+### sort
+
+- E quando inserimos um **r** na frente dessa forma **rsort** 
+
+- Ele vai ordenar o que está na array 
+
+- Mantem o valor inseri **asort** associando 
+```
+$numero = [10, 20, 24, 91, 18];
+
+sort($numeros);
+
+echo "A chave 3 é ".$numero[3];
+
+print_r($numeros);
+```
+
+### implode
+
+- ele vai juntar tudo ele vai tranformar em uma string.
+
+```
+$nome = ['bonieky', 'johnny', 'rebeca'];
+
+$nome = implode(' ', $nomes)
+```
 
