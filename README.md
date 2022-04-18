@@ -313,27 +313,30 @@ somar($x1, $b3,$w1);
 echo $w1;
 ```
 
-### Funções Nativas de Matematica
+## Funções Nativas de Matematica
  
-função absoluto **abs()**.
+- função absoluto **abs()**.
 
-função **pi()**.
+- função **pi()**.
 
-função **floor($variavel) - chão pra baixo**
+- função **floor($variavel) - chão pra baixo**
 
-função **ceil($numero) - pra cima** ;
+- função **ceil($numero) - pra cima** ;
 
 ```
 $numero = 12.45 
 echo round($numero, 2)
 ```
-
+```
 $aleatorio = rand(3,9); **Vai vir numero aleatorio do que você deseja.**
-
+```
+```
 $lista = [1,4,7,9,2];
-**echo max($lista);**
+echo max($lista);
+```
 
-### Funções Nativas string (1/2)
+---
+## Funções Nativas string (1/2)
 ```
 $nomeSujo = '   Johnny     ';
 $nomeLimpo = trim($nomeSujo);
@@ -350,9 +353,9 @@ $nome = 'Bonieky Lacerda';
 
 echo strtolower($nome);
 ```
-strtolower = para deixar o nome minusculo
+- strtolower = para deixar o nome minusculo
 
-strtoupper = para letra maiuscula
+- strtoupper = para letra maiuscula
 
 ```
 
@@ -361,6 +364,8 @@ $nome = 'Bonieky Lacerda';
 $nomeAlterado = str_replace('Lacerda', 'Silva', $nome);
 
 ```
+- Replace 
+
 **procure por = Lacerda**
 
 **Substitua por = Silva**
@@ -377,7 +382,7 @@ echo $nome;
 ```
 
 
-### Funções Nativas de String (2/2)
+## Funções Nativas de String (2/2)
 
 - função explode tem 2 parâmetros, oque irá procurar para ser o divisor entre cada uma das palavras etc. No nosso caso é um espaço ''
 o segundo parâmetro é propria string.
@@ -398,7 +403,7 @@ $numero = 12913.12
 echo number_format($numero,quantidade decimal que vai ter, 'terceiro parametro é optacional', 'quarto parametro simbolos para separar os milhares )
 ```
 
-### Function Nativas Array (1/2)
+## Function Nativas Array (1/2)
 
 ```
 $lista = ['nome1', 'nome2', 'nome3', 'nome4'];
@@ -419,11 +424,11 @@ $reprovados = array_diff($lista, quem eu quero fazer a comparação ---> $aprova
 print_r($reprovados);
 ```
 
-### array_diff
+## array_diff
 - Existe uma função do PHP, que ela vai pegar a difença entre o primeiro e o segundo e ela vai gerar um novo array, com os item que não estão na primeira lista. Os itens da primeira lista que não estão na segunda lista.
  
 
-### array_filter
+## array_filter
 - Ele vai filtrar no array
 
 ```
@@ -444,7 +449,7 @@ print_r($filtrados);
 
 - Nesse exercicos quero fazer também então quero gerar um novo array de filtrados só com os numeros que estão abaixo de 20 ou 30. Ai eu verifico.
 
-### array_pop 
+## array_pop 
 - Remove o ultimo array.
 
 - Não precisa armazenar ele em variavel recebe o parâmetro por referencia ele vai fazer alteração no proprio item que mandar inserimos a variavel que desejamos e vai remover o ultimo item do array.
