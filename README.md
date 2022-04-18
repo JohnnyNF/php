@@ -523,3 +523,17 @@ $nome = ['bonieky', 'johnny', 'rebeca'];
 $nome = implode(' ', $nomes)
 ```
 
+
+---
+---
+
+
+### Trablhando com pastas diferentes
+
+
+### Modulo 4: HTTP Requests
+-action ="o que vai receber os dados", quando não especifica o action ele vai enviar para o proprio arquivo se for index vai enviar para o index 
+
+- Method **POST** Ele vai para a pagina e envia internamente esses dados. Ele não vai ver as informações sendo enviadas. 
+
+- Method **GET** Ele vai enviar pela URL e vai ficar visivel
