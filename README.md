@@ -523,8 +523,25 @@ $nome = ['bonieky', 'johnny', 'rebeca'];
 $nome = implode(' ', $nomes)
 ```
 
+## Data/Hora
 
----
+```
+echo date('d/m/Y H:i:s');
+```
+
+- Para uma conversão de uma data inseri strtotime()
+
+--- 
+
+### Trabalhando com múltiplos arquivos
+
+- Eu insiro o nome do arquivo nas funções. Ex: header.php, index.php, sobre.php e outros.
+
+
+- **Require( )** ele impede o codigo de continuar.
+- **Include( )** ele da um aviso mas continua.
+-**Require_once** ele vai entender que já  tem um arquivo desses."**Sabendo que as tags head e body aparecem apenas uma vez num arquivo HTML, marque alternativa da função de requisição de arquivos que mais se encaixa com essa recomendação."**
+
 ---
 
 
@@ -532,7 +549,7 @@ $nome = implode(' ', $nomes)
 
 
 ### Modulo 4: HTTP Requests
--action ="o que vai receber os dados", quando não especifica o action ele vai enviar para o proprio arquivo se for index vai enviar para o index 
+- action ="o que vai receber os dados", quando não especifica o action ele vai enviar para o proprio arquivo se for index vai enviar para o index 
 
 - Method **POST** Ele vai para a pagina e envia internamente esses dados. Ele não vai ver as informações sendo enviadas. 
 
