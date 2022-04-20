@@ -542,15 +542,74 @@ echo date('d/m/Y H:i:s');
 - **Include( )** ele da um aviso mas continua.
 -**Require_once** ele vai entender que já  tem um arquivo desses."**Sabendo que as tags head e body aparecem apenas uma vez num arquivo HTML, marque alternativa da função de requisição de arquivos que mais se encaixa com essa recomendação."**
 
+
 ---
 
-
 ### Trablhando com pastas diferentes
+---
 
-
-### Modulo 4: HTTP Requests
+## Modulo 4: HTTP Requests
 - action ="o que vai receber os dados", quando não especifica o action ele vai enviar para o proprio arquivo se for index vai enviar para o index 
 
 - Method **POST** Ele vai para a pagina e envia internamente esses dados. Ele não vai ver as informações sendo enviadas. 
 
-- Method **GET** Ele vai enviar pela URL e vai ficar visivel
+- Method **GET** Ele vai enviar pela URL e vai ficar visivel.
+
+## Pegando informações do formulário 
+
+- Função filter_input() ele tem 2 parâmetros o tipo de metodo que foi usado para enviar o metodo que foi usado foi GET o nome do campo que foi 'nome'
+ele vai pegar esse campo e vai fazer uam verificação se está preenchido ou não.
+
+Em um novo arquivo com o nome "recebedor.php" digito essas infomarções:
+
+```
+$nome = filter_input(INPUT_GET, 'name');
+
+Para verificar se o nome foi preenchido fazer uma condição
+
+if($nome){
+    echo "NOME: ".$nome;
+}else {
+    echo "NÃO FOI PREENCHIDO" .$nome;
+}
+
+echo 'NOME: '.$nome;
+```
+
+- A mesma coisa com a idade: 
+
+o dois (&&) comercial significa "e" 
+
+```
+$nome = filter_input(INPUT_GET, 'name');
+$idade = filter_input(INPUT_GET, 'idade');
+
+if($nome && $idade){
+    echo "NOME: ".$nome;
+    echo "IDADE: ".$idade;
+}else {
+    echo "NÃO FOI PREENCHIDO";
+}
+
+```
+
+- E para voltar para a tela anterior se 'NÃO FOI PREENCHIDO' faço um rederecionamento 
+
+- A função header vai trocar o header o cabeçalho da requisição e vou trocar a informação Location para o arquivo que eu quero
+
+- Logo após inseri um comando **exit**. Ele vai cancelar a execução do restante do código abaixo.
+
+```
+$nome = filter_input(INPUT_GET, 'name');
+$idade = filter_input(INPUT_GET, 'idade');
+
+if($nome && $idade){
+    echo "NOME: ".$nome;
+    echo "IDADE: ".$idade;
+}else {
+    header("Location: ./index1.php");
+    exit;
+}   
+
+
+```
