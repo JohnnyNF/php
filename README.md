@@ -613,3 +613,167 @@ if($nome && $idade){
 
 
 ```
+
+## Validando informações do formulário
+
+- Para validar um campo, vá até ele e inserio comando  **,FILTER_VALIDATE_EMAIL**.
+
+- **SANITAZE** ele vai alterar os dados que foram enviados pra ficar em conformidade com oque espero **FILTER_SANITAZE_NUMBER_INT**.
+
+- Tem também o **filter_var** quando por exemplo já tenho uma informação e quero validar a informação ou peguei uma informação de fora de um outro local ou preencheu uma variavel quero filtrar a validação. 
+
+- Para evitar possiveis brechas **FILTER_SANNITIZE_SPECIAL_CHARS** Ele vai transformar em texto.
+
+- FILTER_VALIDADE_INT - Numero inteiro
+- FILTER_VALIDADE_EMAIL - Só vai validar o email
+- FILTER_VALIDADE_IP - Verifica se o ip é correto
+- FILTER_VALIDADE_URL- Verifica se foi um link real
+
+```
+$email = filter_input(INPUT_POST, 'e-mail', FILTER_VALIDATE_EMAIL);
+$nome = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+$idade = filter_input(INPUT_POST, 'idade', FILTER_SANITIZE_NUMBER_INT);
+
+
+if($nome && $email && $idade){
+    echo "NOME: " .$nome;
+    echo "<br/>";
+    echo "IDADE: " .$idade;
+    echo "<br/>";
+    echo "EMAIL: " .$email;
+
+}else {
+   header('Location: ./index.php');
+   exit;
+}
+
+```
+
+## Sessões no PHP
+
+- Sessões armazenar informações independente da pagina que eu esteja mandar uma informação a uma pagina a outra, uma sessãonão fica no computador do usuario ela fica no servidor.
+Quando você acessa ele identifica que a sessão pertence a você e pega as informações.
+
+- O comando usado vai ser **session_start()** se não existir uma sessão ele vai inicia e se existir ele vai recuperar.
+
+```
+<?php
+session_start();
+require('header.php');
+
+?>
+
+<form method="POST" action="recebedor.php">
+
+    <label>
+        Nome:
+        <br/>
+        <br/>
+        <input type="text" name="name"/>
+    </label>
+    <br/>
+    <br/>
+
+    <label>
+        E-mail:
+        <br/>
+        <br/>
+        <input type="text" name="e-mail"/>
+    </label>
+    <br/>
+    <br/>
+
+    <label>
+        Idade:
+        <br/>
+        <input type="text" name="idade" />
+    </label>
+    <br/>
+    <br/>
+
+    <input type="submit" value="Enviar" />
+
+</form>
+```
+--- 
+
+- Para salvar informações na sessões antes do **header()** preenchemos com a variavel **$_SESSION** - ELA É UMA ARRAY.
+
+**Logo após inserir $_SESSION['aviso'] = 'Preencha os itens corretamen!';** Dentro dela vai ir inserir oque quer salvar por exemplo ['aviso]
+
+```
+<?php
+session_start();
+
+$email = filter_input(INPUT_POST, 'e-mail', FILTER_VALIDATE_EMAIL);
+$nome = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+$idade = filter_input(INPUT_POST, 'idade', FILTER_SANITIZE_NUMBER_INT);
+
+if($nome && $email && $idade){
+    echo "NOME: " .$nome;
+    echo "<br/>";
+    echo "IDADE: " .$idade;
+    echo "<br/>";
+    echo "EMAIL: " .$email;
+
+}else {
+   $_SESSION['aviso'] = 'Preencha os itens corretamente!'; ===========> UM VALOR NA SESSION
+    
+   header('Location: ./index.php'); ====> MANDOU PRO INDEX 
+   exit;
+}
+
+```
+
+- Logo após vou fazer uma condição que vai fazer uam verificação se está corrreto com **if**
+**Forma literaria SE SESSION AVISO EXISTIR VOU MOSTRAR A SESSION**
+- Umas das maneirar de retirar o aviso seria.
+
+```
+<?php
+session_start();
+require('header.php');
+
+
+if($_SESSION['aviso]) { =========> SE EXITIR A SESSÃO 
+    echo $_SESSION['aviso']; ======> MOSTRAR SESSION 
+    $_SESSION['aviso'] = '';  ====> MANEIRA DE RETIRAR O AVISO
+}
+
+?>
+
+<form method="POST" action="recebedor.php">
+
+    <label>
+        Nome:
+        <br/>
+        <br/>
+        <input type="text" name="name"/>
+    </label>
+    <br/>
+    <br/>
+
+    <label>
+        E-mail:
+        <br/>
+        <br/>
+        <input type="text" name="e-mail"/>
+    </label>
+    <br/>
+    <br/>
+
+    <label>
+        Idade:
+        <br/>
+        <input type="text" name="idade" />
+    </label>
+    <br/>
+    <br/>
+
+    <input type="submit" value="Enviar" />
+
+</form>
+```
+
+
+
