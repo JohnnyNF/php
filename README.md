@@ -533,7 +533,7 @@ echo date('d/m/Y H:i:s');
 
 --- 
 
-### Trabalhando com múltiplos arquivos
+## Trabalhando com múltiplos arquivos
 
 - Eu insiro o nome do arquivo nas funções. Ex: header.php, index.php, sobre.php e outros.
 
@@ -545,7 +545,7 @@ echo date('d/m/Y H:i:s');
 
 ---
 
-### Trablhando com pastas diferentes
+## Trablhando com pastas diferentes
 ---
 
 ## Modulo 4: HTTP Requests
@@ -557,7 +557,7 @@ echo date('d/m/Y H:i:s');
 
 ## Pegando informações do formulário 
 
-- Função filter_input() ele tem 2 parâmetros o tipo de metodo que foi usado para enviar o metodo que foi usado foi GET o nome do campo que foi 'nome'
+- Função filter_input() ele tem 2 parâmetros o tipo de metodo que foi usado para enviar o metodo que foi usado foi GET o nome do campo que foi 'name'
 ele vai pegar esse campo e vai fazer uam verificação se está preenchido ou não.
 
 Em um novo arquivo com o nome "recebedor.php" digito essas infomarções:
@@ -578,7 +578,7 @@ echo 'NOME: '.$nome;
 
 - A mesma coisa com a idade: 
 
-o dois (&&) comercial significa "e" 
+**Os dois (&&) comercial significa "e"** 
 
 ```
 $nome = filter_input(INPUT_GET, 'name');
@@ -593,9 +593,9 @@ if($nome && $idade){
 
 ```
 
-- E para voltar para a tela anterior se 'NÃO FOI PREENCHIDO' faço um rederecionamento 
+- E para voltar para a tela anterior se 'NÃO FOI PREENCHIDO' faço um redirecionamento 
 
-- A função header vai trocar o header o cabeçalho da requisição e vou trocar a informação Location para o arquivo que eu quero
+- A função header vai trocar o header - cabeçalho da requisição e vou trocar a informação Location para o arquivo que eu quero
 
 - Logo após inseri um comando **exit**. Ele vai cancelar a execução do restante do código abaixo.
 
@@ -727,6 +727,7 @@ if($nome && $email && $idade){
 
 - Logo após vou fazer uma condição que vai fazer uam verificação se está corrreto com **if**
 **Forma literaria SE SESSION AVISO EXISTIR VOU MOSTRAR A SESSION**
+no documento que vocÊ deseja usar.
 - Umas das maneirar de retirar o aviso seria.
 
 ```
@@ -774,6 +775,89 @@ if($_SESSION['aviso]) { =========> SE EXITIR A SESSÃO
 
 </form>
 ```
+---
+## Cookies no PHP 
+
+- Para setar um cookie inserimos **setcookie()**.
+
+ 1º Parâmetro é o nome do cookie.  
+ exemplo: 'nome'
+
+2º Parâmetro o valor que vai ficar salvo esse cookie. Também seria a informação que vou armazenar dentro dele.
+Exemplo : $nome ======> nome do usario 
+
+3º Parâmetro quando é que esse cookie expira. 
+Exemplo: time(valor em milisegundos) + (86400 * 30)
+
+- 86400 = 1 dia em milisegundos
+```
+<?php
+session_start();
+
+$email = filter_input(INPUT_POST, 'e-mail', FILTER_VALIDATE_EMAIL);
+$nome = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+$idade = filter_input(INPUT_POST, 'idade', FILTER_SANITIZE_NUMBER_INT);
+
+if($nome && $email && $idade){
+    
+    $expiracao = time() + (86400 * 30);
+    setcookie('name', $nome, $expiracao);
+    
+    echo "NOME: " .$nome;
+    echo "<br/>";
+    echo "IDADE: " .$idade;
+    echo "<br/>";
+    echo "EMAIL: " .$email;
+
+}else {
+   $_SESSION['aviso'] = 'Preencha os itens corretamente!';
+    
+   header('Location: ./index.php');
+   exit;
+}
+```
+### Para chamar o cookie
+
+- Nós inserimos a variavel numa condição **SE $_COOKIE['']{}** e dentro dos colchetes eu insiro oque eu quero 'nome'
+
+- E junto nessa condição para não ocorrer um erro inserimos **isset()** que significa = está setado essa variavel **SE** TIVER **SETADO** ELE ENTRA **SE NÃO**   ELE NÃO DA ERRO.
+
+```
+No INDEX ou NO ARQUIVO que queremos nos chamamos o cookie 
+
+<a href ="">Home</a>
+
+</br>
+<?php
+    if(isset($_COOKIE['name'])){
+        $nome = $_COOKIE['name'];
+        echo '<h2>'.$nome.'</h2>';
+    }
+?>
+```
+
+### APAGAR O COOKIE 
+- Para apagar um cookie eu posso setar ele vazio ou preenchido tenho que setar ele com um tempo no passado.
+
+setcookie('nome', '', time() - 3600);
+
+
+```
+Inserir em um arquivo para apagar o cookie 
+
+setcookie('nome', '', time() - 3600);
+
+header("Location: index.php");
+exit;
+```
+
+## DIFERENÇA entre SESSION e COOKIE
+A SESSÃO funciona enquanto o navegador tiver aberto quando você fecha o navegador ela é destruida o COOKIE não ele tem uma validade especifica ele fica salvo no computador e conseguimos mesmo desligando o pc e ligando novamente ele ainda vai estar lá desde que ele esteja no processo de validade 
+
+
+---
+
+
 
 
 
