@@ -551,9 +551,9 @@ echo date('d/m/Y H:i:s');
 ## Modulo 4: HTTP Requests
 - action ="o que vai receber os dados", quando não especifica o action ele vai enviar para o proprio arquivo se for index vai enviar para o index 
 
-- Method **POST** Ele vai para a pagina e envia internamente esses dados. Ele não vai ver as informações sendo enviadas. 
+- Method **POST** - Ele vai para a pagina e envia internamente esses dados. Ele não vai ver as informações sendo enviadas. 
 
-- Method **GET** Ele vai enviar pela URL e vai ficar visivel.
+- Method **GET** - Ele vai enviar pela URL e vai ficar visivel.
 
 ## Pegando informações do formulário 
 
@@ -857,7 +857,107 @@ A SESSÃO funciona enquanto o navegador tiver aberto quando você fecha o navega
 
 ---
 
+## Lendo arquivos 
+file _get_content = Vai pegar
+## Escrevendo em arquivos 
+o **file_put_contents()** ele vai fazer 2 coisas, se o arquivo existir ele vai criar e se existir ele vai substituir o arquivo são 2 parâmetros.
+1º -  É o nome do arquivo
+2º - É o conteudo 
+```
+$texto = 'Bonieky Lacerda';
 
+file_put_contents('nome.txt', $texto); 
 
+echo 'Arquivo criado com sucesso';
 
+```
 
+## Excluindo arquivos
+
+- Para excluir insira **unlink('");**
+
+Pode ser uma imagem, mp3, video,texto.
+
+```
+unlink('texto.txt');
+echo 'Arquivo excluido com sucesso.'
+```
+
+## Movendo o arquivo e Renomeando arquivo 
+
+- Para renomear inserimos **rename()**.
+
+- Ele recebe dois parâmetros 
+
+1º é o caminho até o arquivo que quero renomear o arquivo original insiro o nome do arquivo que eu quero.
+
+2º é o nome que eu quero.
+
+```
+rename('texto.txt, 'pasta/teste2.txt');
+```
+
+Para mover o arquivo para uma pasta eu coloco no 2º parametro um diretório 
+
+### copy - Vai copiar o arquivo que seria o primeiro o diretório que encotra o meu arquivo e segundo a minha copia de destino.
+
+--- 
+
+## Upload de arquivos(1/2)
+
+- enctype = elepossibilita o tipo como o formulario agrega o conteudo para fazer o envio desses dados, quando são simplesmente dados, não precisa inserir o enctype, por qie ele vai enviar com o metodo tradiconal **form method="POST" action="recebedor.php"**. Agora quando tem arquivos inserimos **enctype="multipart/form-data"**
+
+```
+<form method="POST" action="recebedor.php" enctype="multipart/form-data">
+    <input type="file" name="arquivo" />
+    <input type="submit" value="Enviar" />
+</form>
+```
+- Logo após no arquivo que vai receber os dados  e fazer oque for solicitado. 
+
+- Para mostrar na tela inseri **print_r( $_FILES )**.
+
+```
+recebedor 
+
+echo '<pre>';
+print_r( $_FILE );
+```
+### Oque irá ser mostrado nessa tarefa.
+
+```
+Array
+(
+    [arquivo] => Array
+        (
+            [name] => BOLETO_237462003.pdf
+            [full_path] => BOLETO_237462003.pdf
+            [type] => application/pdf ----------------> Para inseri a maneira correta. Exemplo: Image eoutros tipos 
+            [tmp_name] => C:\xampp\tmp\php142C.tmp
+            [error] => 0
+            [size] => 229262
+        )
+
+)
+```
+- Dependendo da configuração o arquivo pode ser deletado.
+
+- Quando ele passa pela requisição/recebedor e é aceito o arquivo, faço um comando para ele ficar no meu sistema ou em outro lugar. ai inserimos uma função **move_upload_file()**. Essa função recebe dois parâmetros.
+
+1º - é onde está o arquivo na pasta temporaria, a array;
+```
+                        // Arquivo é o item do array
+move_uploaded_file($_FILE['arquivo])
+```
+ - Onde o arquivo se encontra temporario 
+```
+move_uploaded_file($_FILE['arquivo']['tmp_name'] )
+```
+
+2º - Aonde quero que o arquivo fique;
+
+- Para inserir um nome que ja está la inseri uma variavel e pego as informações da array ['arquivo']['name'] e logo após concatena com a variavel.
+```
+$nome = $_FILE['arquivo'],['name'];
+move_uploaded_file( $_FILE ['arquivo'] ['tmp_name'] , 'arquivos/'.$nome)
+```
