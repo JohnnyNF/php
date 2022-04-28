@@ -4,13 +4,7 @@
 
 
 ---
-```
-$nome = 'Johnny';
-$sobrenome = 'Feijo'
-
-$nomeCompleto = $nome;
-$nomeCompleto .= $sobrenome;
-```
+[Variavéis](https://github.com/JohnnyNF/php/blob/main/nomeCompleto.php)
 
   **o (ponto). antes do igual ele vai fazer o funcionamento de ser oque já tinha na variavel e vai adicionar a variavel que eu desejo**
 
