@@ -1028,3 +1028,26 @@ $array = range('a', 'g');
      echo $item."<br/>";
  }
 ```
+## Key_exists
+
+Para evitar que aconteça o erro inesperado.
+
+A função key_exists. Tem dois parâmetros:
+
+- 1º - Oque você está procurando a chave chamada **nome da chave**.
+
+- 2º E onde está procurando.
+
+```
+$array = [ 
+    'nome' => 'Johnny',
+    'idade' => '25',
+    'empresa' =>'Comp',
+    'cor' => 'Vermelho'
+];
+
+if(key_exists('idade', $array))
+$idade = $array['idade'];
+echo $idade;
+```
+
