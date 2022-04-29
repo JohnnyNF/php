@@ -1002,3 +1002,29 @@ if(in_array($_FILES['jow']['type'], array('iamge/jpeg','image/jpg', 'image/png')
     echo 'Arquivo não permitido!'
 }
 ```
+
+--- 
+
+## Array Range
+
+Função range podemos criar uma array já com valor dentro desse array.
+
+- $variavel = range();
+
+Função range tem dois parâmetros: 
+
+1º - Eu insiro o item que vai começar.
+
+2º - É o item que vai terminar.
+
+E tem um 3º parâmetro.
+
+O multiplicador ou a quantidade de item que vai pular.
+
+```
+$array = range('a', 'g');
+
+ foreach($array as $item) {
+     echo $item."<br/>";
+ }
+```

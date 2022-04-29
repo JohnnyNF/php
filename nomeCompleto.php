@@ -1,7 +1,9 @@
 <?php
 
 $nome = 'Johnny';
-$sobrenome = 'Feijo'
+$sobrenome = 'Feijo';
 
 $nomeCompleto = $nome;
 $nomeCompleto .= $sobrenome;
+
+echo $nomeCompleto;
