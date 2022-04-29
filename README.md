@@ -468,7 +468,7 @@ array_shift($numeros);
 print_r($numero);
 ```
 ### in_array
-- Ele vai procurar se existe algo na varivel solicitada.
+- Ele vai procurar se existe algo na array solicitada.
 ```
 $numero = [10, 20, 24, 91, 18];
 
@@ -954,4 +954,51 @@ move_uploaded_file($_FILE['arquivo']['tmp_name'] )
 ```
 $nome = $_FILE['arquivo'],['name'];
 move_uploaded_file( $_FILE ['arquivo'] ['tmp_name'] , 'arquivos/'.$nome)
+```
+
+## Upload de arquivos(2/2)
+
+Para deixar o arquivos unicos, precisamos de um hash para deixa-lo unico. 
+Ao inves de pegar o nome colocamos a funções para deixar unico.
+
+Essa função tem dois parâmetros:
+
+- 1º O local que se encontra os arquivos  nesse caso 
+**move-uploaded_file($_FILES['arquivo']['tmp_name'], 'diretório onde quero que fique/'** . **e o nome do arquivo ou deixar o nome que está no arquivo)** 
+
+['arquivo'] = seria o item do array que se encontra
+
+['tmp_name'] = a pasta temporaria do arquivo
+
+
+```
+echo '<prev>';
+print_r($_FILES);
+
+$nome = md5(time().rand(0, 1000));
+move_uploaded_file($_FILES['arquivo']['tmp_name], 'arquivos/'.$nome);
+```
+
+- md5: É um hash.
+
+- Exemplo para fazer um formulario e precisa de só imagens, como fazer? 
+
+- Primeiro de tudo vou conferir se o type desse arquivo dentro da lista de type's que eu quero. Então usaria a função **in_array**
+
+```
+<?php 
+
+echo '<prev>';
+print_r($_FILES);
+
+//Vai fazer uma verificação de arquivos que vão aceitar e depois na variavel $nome
+//deixa-lo o arquivo unico.
+//Junto com isso armazenar o local dos arquivos 'jow' com os arquivos temporarios 'tmp_name'.
+
+if(in_array($_FILES['jow']['type'], array('iamge/jpeg','image/jpg', 'image/png'))){
+    $nome = md5(time().rand(0,1000)).'.jpg';
+    move_uploaded_file($_FILES['jow']['tmp_name'], 'arquivos/'.$nome);
+}else {
+    echo 'Arquivo não permitido!'
+}
 ```
