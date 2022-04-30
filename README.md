@@ -62,21 +62,7 @@ for($i = 0; $i < 20; $i++){
 ```
 - ### Switch
 
-```
-$tipo = 'foto';
-
-switch($tipo) {
-    case 'foto':
-        echo 'Exibindo FOTO';
-            break;
-    case 'video':
-        echo 'Exibindo VIDEO';
-            break;
-    case 'texto':
-        echo 'Exibindo TEXTO';
-            break;
-}
-```
+[Switch](https://github.com/JohnnyNF/php/blob/main/switch.php)
 ---
 
 
