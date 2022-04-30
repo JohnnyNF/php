@@ -1,3 +1,4 @@
+<?php
 $tipo = 'foto';
 
 switch($tipo) {
