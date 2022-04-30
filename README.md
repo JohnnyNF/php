@@ -62,9 +62,10 @@ for($i = 0; $i < 20; $i++){
 ```
 - ## Switch
 
-
+---
 
 [Switch](https://github.com/JohnnyNF/php/blob/main/switch.php)
+
 ---
 
 
