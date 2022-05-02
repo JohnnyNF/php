@@ -1103,3 +1103,156 @@ print_r($retorno); =========> ver o resultado
 ```
 
 com o  '-' voltamos a array 
+
+## array_reduce 
+
+O array_reduce tem 2 parâmetros:
+
+- 1º Parâmetro eu mando a varivel solicitada.
+
+- 2º Parâmetro vou mandar um nome de uma função para executar então crio uma função. 
+
+Na prate reduce então criamos uma função com essa função inserimos 2 parâmetros
+
+O $subtotal ele vem com = 0
+```
+$numero = [1, 2, 3, 4, 5];
+
+function somar($subtotal, $item){
+    $subtotal = $subtotal + $item;
+    retutn $subtotal
+}
+
+$total = array_reduce($numero, 'somar');
+```
+
+NESSE EXEPLOC USAMOS ISSO:
+
+Para contar o numero de sexo masculino fazemos uma condição
+
+a função inserimos uma conta com o nome 'contar_m'
+"SE O ITEM SEXO IGUAL A 'M' ENTÃO VAI AUMENTAR ++"
+"SE É UM HOMEM  SUBTTOTAL VAI AUMENTAR UM"
+```
+<?php
+
+$pessoas = [
+    ['nome' => 'Fulano', 'sexo' => 'M', 'nota' => 9],
+    ['nome' => 'Ciclano', 'sexo' => 'M', 'nota' => 7],
+    ['nome' => 'Beltrano', 'sexo' => 'F', 'nota' => 10],
+    ['nome' => 'Paulo', 'sexo' => 'M', 'nota' => 8],
+    ['nome' => 'Cintia', 'sexo' => 'F', 'nota' => 9],
+    ['nome' => 'Jessica', 'sexo' => 'F', 'nota' => 9]
+];
+
+function contar_m($subtotal, $item){
+    if($item['sexo'] === 'M') {
+        $subtotal++;
+    } 
+    return $subtotal;  
+}
+
+$total_m = array_reduce($pessoas, 'contar_m');
+
+echo "Total de homens: ".$total
+
+```
+
+```
+$pessoas = [
+    ['nome' => 'Fulano', 'sexo' => 'M', 'nota' => 9],
+    ['nome' => 'Ciclano', 'sexo' => 'M', 'nota' => 7],
+    ['nome' => 'Beltrano', 'sexo' => 'F', 'nota' => 10],
+    ['nome' => 'Paulo', 'sexo' => 'M', 'nota' => 8],
+    ['nome' => 'Cintia', 'sexo' => 'F', 'nota' => 9],
+    ['nome' => 'Jessica', 'sexo' => 'F', 'nota' => 9]
+];
+
+// Total de homens 
+function contar_m($subtotal, $item){
+    if($item['sexo'] === 'M') {
+        $subtotal++;
+    } 
+    return $subtotal;  
+}
+
+$total_m = array_reduce($pessoas, 'contar_m');
+
+// Soma das notas dos homens 
+
+function soma_m($subtotal, $item){
+    if($item['sexo'] === 'M'){
+        $subtotal += $item['nota'];
+    }
+    return $subtotal;
+}
+
+$soma_m = array_reduce($pessoas, 'soma_m');
+
+//media dos homens
+$media_m = $soma_m / $total_m;
+
+echo "Total de Homens: ".$total_m;"<br>";
+echo "Soma das notas dos homens: ".$soma_m;"<br>";
+echo "Media dos homens: ".$media_m."<br>"; 
+```
+
+---
+
+## Descontruindo usando list 
+
+Para descontruir uma array inserimos a função list($nome, $idade, $bebida, $cor) = $array;
+
+- Ele vai pegar a array $array o primeiro item variavel nome, segundo item na variavel idade, terceiro item bebida, quarto item cor;
+
+```
+$array = ['Johnny', 90, 'cafe', 'azul'];
+
+list($nome, $idade, $bebida, $cor) = $array;
+
+echo $nome." tem ".$idade." anos e gosta de tomar ".$bebida. " com a cor".$cor; 
+```
+
+
+# Orientação a objetos
+
+## Introdução
+
+## Definindo Classes e Objetos 
+
+- Uma CLASSE eu vou definir a propriedades daquele objeto.
+
+Criando uma classe supor: Vamos criar uma CLASSES que vai ficar responsavel pelos posts, essa classe tem que saber quantos likes quantos comentarios e quais comentarios o post tem o tipo se é uma foto ou video e texto. 
+
+Junto com isso as funções especificas supor no botão da mãozinha ele vai por o like, então ele vai aumentar a quantidade de likes naqueles posts.
+
+o ato de só criar a clesse não executa ela ele tem uma ideia de posts criado.
+
+A CLASSE é um modelo do veiculo. A classe é estatica. É a estrutura para a formação de objetos.
+
+O OBJETO é dinâmico porque você efetua ações com ele atraés dos métodos estruturados na classe. Umas definição de objeto é a instacia de classe. Como na analogia podemos dizer que é você que da a vida a CLASSE. Porque classe sem instaciar objeto não sera utilizado.
+
+```
+class Post {
+    public $likes = 0;     |
+    public $coments = [];  |=====>CLASSE CRIADA
+    public $author;        |
+}
+```
+
+Agora criamos nosso objeto para criar um objeto usamos um comando **new** e depois associo esse objeto a uma variavel.
+Falamos instaciar 
+
+```
+$post1 = new Post();
+```
+Agora definimos as propriedades usamos a -> para definir.
+
+```
+$post1 = new Post();
+$post1 ->$likes = 3;
+```
+```
+$post2 = new Post();
+$post2->$likes = 10;
+```
