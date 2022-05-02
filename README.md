@@ -1021,6 +1021,7 @@ $array = range('a', 'g');
 
 Para evitar que aconteça o erro inesperado.
 
+
 A função key_exists. Tem dois parâmetros:
 
 - 1º - Oque você está procurando a chave chamada **nome da chave**.
@@ -1040,3 +1041,65 @@ $idade = $array['idade'];
 echo $idade;
 ```
 
+
+## array_keys e array_values 
+
+array_keys
+
+Ele ira mostrar as chaves do codigo 
+
+$varivel = array_keys($array);
+
+```
+$array = [ 
+    'nome' => 'Johnny',
+    'idade' => '25',
+    'empresa' =>'Comp',
+    'cor' => 'Vermelho'
+];
+
+$chaves = array_keys($array);
+```
+
+array_values 
+
+Ele ira mostrar os valores do codigo
+
+$varivel = array_values($array);
+
+```
+$array = [ 
+    'nome' => 'Johnny',
+    'idade' => '25',
+    'empresa' =>'Comp',
+    'cor' => 'Vermelho'
+];
+
+$valores = array_values($array);
+```
+
+## Array_slice
+
+- Array slice serve para cortar a array no meio ou onde quer que eu use.
+
+- Ele não vai alterar o array original, ele vai criar um novo array com essa copia da array que eu quero pegar.
+
+ Ele tem parâmetros :
+
+- 1º - Vai inserir o array que eu quero fazer modificação 
+
+- 2º - Por onder quer que comece esse corte. EXEMPLO: 
+Quero que comece na posição 0 do array.
+
+- 3º - É quantos itens que eu quero pegar. EXEMPLO = ['a', 'b']
+
+```
+<?php
+
+$array = ['a','b','c','d','e','f'];
+
+$retorno = array_slice($array, 0, 2);
+print_r($retorno); =========> ver o resultado
+```
+
+com o  '-' voltamos a array 
