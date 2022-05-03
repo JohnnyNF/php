@@ -1250,9 +1250,11 @@ Agora definimos as propriedades usamos a -> para definir.
 
 ```
 $post1 = new Post();
-$post1 ->$likes = 3;
+$post1 ->likes = 3;
 ```
 ```
 $post2 = new Post();
-$post2->$likes = 10;
+$post2->likes = 10;
 ```
+
+Esses $post1->likes é a propriedades 
