@@ -1258,3 +1258,115 @@ $post2->likes = 10;
 ```
 
 Esses $post1->likes é a propriedades 
+
+### Agora vamos falar sobre metodos
+
+O objeto tem caracteristicas e pode executar funções, tarefas ou atraves do proprio obejto.
+Por exemplo vamos pegar um metodo especifico para aumentar a quantidade de likes:
+
+- Inserimos o metodo na classe pois na classe que arquitetamos. 
+- Inserimos uma função mas ela só vai ser utilizada na classe com o nome ¨aumentarLike¨.
+
+- Para acessar a propriedade $likes, inseri ¨$this¨ significa ISTO uma ocisa que está proxima
+
+- Para utilizar o methodo utilizamos a $variavel junto.
+
+```
+<?php
+
+class Post {
+    public $likes = 0;
+    public $coments = [];
+    public $author;
+
+    public function aumentarLike() {
+        $this->likes++;
+    }
+}
+
+$post1 = new Post();
+$post1->aumentarLike();
+
+$post2 = new Post();
+$post2->aumentarLike();
+
+echo "Quantidade de likes Post 1: ".$post1->likes."<br/>";
+echo "Quantidade de likes Post 2: ".$post2->likes."<br/>";
+```
+
+
+## Método Contrutor 
+
+Uma classe vem com possibilidade de você ter uns metodos especificos para rodar automaticamente.
+
+o metodo construtor seria, metodo __construct ele é um metodo que sempre quando você cria ele executa toda vez que cria um objeto novo.
+
+Pra que serve o constutor __construct sempre quando precisar executar alguma coisa, no momento que o objeto é criado você usa o construtor 
+
+```
+<?php
+
+class Post {
+    public int $id;
+    public int $likes = 0;
+    public array $comments = [];
+    public string $author;
+
+    public function __construct($postId)
+    {
+        $this->id = $postId;
+        // Consultar o bando de dados para pegar as informações do post $ID
+        $this->likes =12;
+    }
+
+    public function aumentarLike()
+    {
+        echo 'abc';
+        $this->likes++;
+    }
+}
+
+$post1 = new Post( 25 );
+
+$post2 = new Post(60);
+
+echo "Post 1: ".$post1->likes."<br/>";
+echo "Post 2: ".$post2->likes."<br/>";
+
+```
+
+
+## Encapsulamento 
+```
+
+class Post {
+    public int $id;
+    public int $likes = 0;
+    public array $comments = [];
+    public string $author;
+
+    public function aumentarLike()
+    {
+        $this->likes++;
+    }
+
+    public function setAuthor($n){
+        $this->author = $n;
+        
+    }
+
+    public function getAuthor(){
+        return $this->author;
+    }
+}
+
+$post1 = new Post();
+$post1->setAuthor('Johnny');
+
+$post2 = new Post();
+$post2->setAuthor('Fulano');
+
+echo "Post 1: ".$post1->likes."likes - ".$post2->getAuthor()."<br/>";
+echo "Post 2: ".$post2->likes."likes - ".$post2->getAuthor()."<br/>";
+
+```
