@@ -1368,5 +1368,12 @@ $post2->setAuthor('Fulano');
 
 echo "Post 1: ".$post1->likes."likes - ".$post2->getAuthor()."<br/>";
 echo "Post 2: ".$post2->likes."likes - ".$post2->getAuthor()."<br/>";
-
 ```
+
+## Método Estático 
+
+É um metodo dentro da classe "Ele é independente" ou seja ele pode ser usado unicamente externamente.
+
+- Para utilizar o metodo estático inserimos o **static**
+
+Nós inserimos os   **: :**  para chamar-lo dentro da classe metodo estatico sem precisar instaciar o objeto.
