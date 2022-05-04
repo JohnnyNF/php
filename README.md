@@ -1344,8 +1344,11 @@ echo "Post 2: ".$post2->likes."<br/>";
 
 
 ## Encapsulamento 
-```
 
+-
+-
+
+```
 class Post {
     public int $id;
     public int $likes = 0;
@@ -1377,3 +1380,49 @@ echo "Post 1: ".$post1->likes."likes - ".$post2->getAuthor()."<br/>";
 echo "Post 2: ".$post2->likes."likes - ".$post2->getAuthor()."<br/>";
 
 ```
+
+---
+```
+class Login {
+    private $email;
+    private $senha;
+
+    public function getEmail(){
+        return $this->email;
+    }
+    public function setEmail($e){
+        $this->email = $e;
+    }
+
+    public function getSenha(){
+        return $this->senha;
+    }
+
+    public function setSenha($s){
+        $this->senha = $s;
+    }
+
+    public function logar(){
+        if($this->email == "teste@teste.com" and $this->senha == "123456"):
+            echo "Logado com sucesso!";
+        else:
+            echo "Dados invalidos";
+        endif;
+    }
+}
+
+$entrar = new Login;
+$entrar->setEmail("teste@teste.com");
+$entrar->setSenha("123456");
+$entrar->logar();
+echo "<br/>"; 
+echo $entrar->getEmail();
+```
+
+## Método Estático 
+
+É um metodo dentro da classe "Ele é independente" ou seja ele pode ser usado unicamente externamente.
+
+- Para utilizar o metodo estático inserimos o **static**
+
+Nós inserimos os   **: :**  para chamar-lo dentro da classe metodo estatico sem precisar instaciar o objeto.
