@@ -1426,3 +1426,51 @@ echo $entrar->getEmail();
 - Para utilizar o metodo estático inserimos o **static**
 
 Nós inserimos os   **: :**  para chamar-lo dentro da classe metodo estatico sem precisar instaciar o objeto.
+
+
+## Entendendo Herança  
+
+-
+-
+O exmplo embaixo é para ver o HERANÇA:
+- Crio uma nova classe com o nome Foto, essa classe foto vai extender a classe Post.
+- Dentro da classe Foto vai usar tudo que está na classse Post
+
+```
+class Post {
+    private int $id;
+    private int $likes = 0;
+
+    public function setId($i){
+        $this->id=$i;
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function setLikes($li){
+        $this->likes=$li;
+    }
+    public function getLikes(){
+        return $this->likes;
+    }
+}
+
+class Foto extends Post{
+    private $url;
+
+    public function __construct($id){
+        $this->setId($id);
+    }
+    public function setUrl($u){
+        $this->url=$u;
+    }
+    public function getUrl(){
+        return $this->url;
+    }
+}
+
+$foto = new Foto(20);
+$foto->setLikes(12);
+$foto->setUrl('abc');
+echo "FOTO:".$foto->getID()."-".$foto->getLikes()." likes - ".$foto->getUrl();
+```
