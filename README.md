@@ -1474,3 +1474,7 @@ $foto->setLikes(12);
 $foto->setUrl('abc');
 echo "FOTO:".$foto->getID()."-".$foto->getLikes()." likes - ".$foto->getUrl();
 ```
+
+## Propriedade Private e Protected
+
+A propriedade PRIVADA só pode ser acessada na classe mãe, ela só pode ser alterada pela classe que criou.
