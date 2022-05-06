@@ -1474,3 +1474,133 @@ $foto->setLikes(12);
 $foto->setUrl('abc');
 echo "FOTO:".$foto->getID()."-".$foto->getLikes()." likes - ".$foto->getUrl();
 ```
+
+## Entendendo Interfaces
+
+Crio um guia para as minhas classes que vão utilizar esse guia **interace** ao inves de inserir chaves **{}**, nós inserimos o ;n interface.
+
+Para implementar a interfaces **Database**.
+
+```
+<?php
+interface Database{
+   public function listaProdutos();
+
+   public function adcionarProdutos();
+
+   public function alterarProduto();
+}
+
+class MySqlDB implements Database{
+
+   public function listaProdutos(){
+
+   }
+   public function adcionarProdutos(){
+      echo "Adicionando com MySQL";
+   }
+   public function alterarProduto(){
+
+   }
+
+}
+
+class OracleDB implements Database{
+   public function listaProdutos(){
+
+   }
+   public function adcionarProdutos(){
+      echo "Adicionando com Oracle";
+   }
+   public function alterarProduto(){
+
+   }
+
+}
+
+
+$db = new MySqlDB();
+$db->adcionarProdutos();
+
+
+```
+
+## Entendendo Polimorfismo
+
+É simplesmente reescrever um metodo herdado, reescrevo o metodo andar
+Em outras palavras Polimorfimos é substituir ou reecrever um metodo herdado da classe pai que é a classe Animal
+
+```
+class Animal{
+    public function andar(){
+        echo "O animal andou";
+   }
+}
+class Cavalo extends Animal{
+    public function andar(){
+        echo "O cavalo andou";
+   }
+} 
+$animal = new Cavalo();
+$animeal->andar();
+```
+
+---
+
+```
+<?php
+interface Forma {
+   public function getTipo();
+   public function getArea();
+}
+
+class Quadrado implements Forma{
+   private $largura;
+   private $altura;
+   
+   public function __construct($l,$a){
+      $this->largura = $l;
+      $this->altura = $a;
+   }
+   public function getTipo(){
+      return "quadrado";
+   }
+   public function getArea(){
+      return $this->largura * $this->altura;
+   }
+}
+
+class Circulo implements Forma{
+    private $raio;
+
+
+   public function __construct($r){
+      $this->raio = $r;  
+   }
+   public function getTipo(){
+      return 'circulo';
+   }
+   public function getArea(){
+      return pi()*($this->raio * $this->raio);
+   }
+}
+
+$quadrado=new Quadrado(5,5);
+
+$circulo=new Circulo(7); 
+
+$objetos = [
+   $quadrado,
+   $circulo
+];
+
+foreach($objetos as $objeto){
+   $tipo=$objeto->getTipo();
+   $area=$objeto->getArea();
+   echo "AREA: ".$tipo." : ".$area."<br/>";
+}
+```
+
+```
+
+```
