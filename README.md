@@ -1475,6 +1475,7 @@ $foto->setUrl('abc');
 echo "FOTO:".$foto->getID()."-".$foto->getLikes()." likes - ".$foto->getUrl();
 ```
 
+<<<<<<< HEAD
 ## Entendendo Interfaces
 
 Crio um guia para as minhas classes que vão utilizar esse guia **interace** ao inves de inserir chaves **{}**, nós inserimos o ;n interface.
@@ -1604,3 +1605,8 @@ foreach($objetos as $objeto){
 ```
 
 ```
+=======
+## Propriedade Private e Protected
+
+A propriedade PRIVADA só pode ser acessada na classe mãe, ela só pode ser alterada pela classe que criou.
+>>>>>>> d8ef86b93d86cdb8aca1c4acc293452dc06d415b
