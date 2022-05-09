@@ -1610,3 +1610,167 @@ foreach($objetos as $objeto){
 
 A propriedade PRIVADA só pode ser acessada na classe mãe, ela só pode ser alterada pela classe que criou.
 >>>>>>> d8ef86b93d86cdb8aca1c4acc293452dc06d415b
+
+
+## Polimorfismo 
+-
+-
+``` 
+<?php
+
+interface Forma {
+   public function getTipo();
+   public function getArea();
+}
+
+class Quadrado implements Forma{
+   private $largura;
+   private $altura;
+
+   public function __construct($l,$a){
+      $this->largura=$l;
+      $this->altura=$a;
+   }
+   public function getTipo(){
+      return 'quadrado';
+   }
+   public function getArea(){
+      return $this->largura * $this->altura;
+   }
+}
+
+class Circulo implements Forma{
+   private $raio;
+   
+   public function __construct($r){
+      $this->raio=$r;
+   }
+   public function getTipo(){
+      return 'circulo';
+   }
+   public function getArea(){
+      return pi() * ($this->raio * $this->raio);
+   }
+}
+
+$quadrado = new Quadrado(5,5);
+$circulo = new Circulo(7);
+
+$objetos = [
+   $quadrado,
+   $circulo
+];
+
+foreach($objetos as $objeto){
+   $tipo=$objeto->getTipo();
+   $area=$objeto->getArea();
+   echo "AREA: ".$tipo." : ".$area."<br/>";
+}
+```
+--- 
+## Namespace
+
+Ele foi criado como uma forma de você encapsular classes, constante, enfim, dentro de um grupo para que você consiga usar classes com o memso nome dentro da mesma aplicação.
+
+- É meio que cirar varias caixinhas e que eu consigo ter varias classes com o mesmo nome.
+
+- Nós inserimos um **namespace** nos arquivos classes1.php e classes2.php.
+
+```
+<?php 
+
+            // Arquivo classes1.php
+namespace classes1;
+
+class MinhaClasse {
+    public function testar(){
+        return 'Testando classe 1';
+    }
+    
+}
+```
+
+```
+<?php
+        // Arquivo classes2.php
+namespace classes2;
+
+class MinhaClasse {
+    public function testar(){
+        return 'Testando classe 2';
+    }
+    
+}
+```
+
+- Para usar essas classes no index.php crio
+
+```
+require 'classes1.php';
+require 'classes2.php';
+
+        // Insiro o nome da classe
+$a = new classes1/MinhaClasse();
+echo $a->testar();
+```
+
+- Para usar a classes Basic insiro...
+
+```
+    
+require 'classes/matematica/basic.php';
+
+    // O **as** significa como se fosse.
+    //Ele tem que ser do mesmo nome que eu instaciei no objeto. Se fosse **as Dev**
+    teria que instaciar com **new Dev**.
+
+use classes\matematica\Basic as Basic;
+
+$basico = new Basic();
+```
+
+## Injeção de Dependência
+
+Ele inseri uma classe dentro de outra normalmente no construtor mas não necessariamente.
+
+- Vou instanciar a classe que eu quero usar como no processo Basico
+
+- Basicamente é inserir um objeto que eu quero de fora para dentro da minha classe 
+
+```
+class Basico1{
+   public function somar($x,$y){
+      return $x + $y;
+   }
+}
+
+class Basico2 {
+   public function somar($x,$y){
+      $res = $x;
+      for($q=0;$q<$y;$q++) {
+         $res++;
+      }
+      return $res;
+   }
+}
+
+class Matematica {
+   private $basico;
+   
+   public function __construct($b) {
+      $this->basico = $b;
+   }
+   public function somar($x,$y){
+      return $this->basico->somar($x, $y);
+   }
+
+}
+
+        //Inserir um objeto que eu quero de fora para dentro da classe
+
+$basico = new Basico1();
+$mat = new Matematica($basico); // Posso instanciar dentro dos parenteses (new Basic1)
+echo $mat->somar(10,10);
+```
+
+
