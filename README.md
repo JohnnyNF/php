@@ -1772,5 +1772,88 @@ $basico = new Basico1();
 $mat = new Matematica($basico); // Posso instanciar dentro dos parenteses (new Basic1)
 echo $mat->somar(10,10);
 ```
+## Autoload
 
+Para fazer um auload nós usamos uma função chamada **spl_autoload_register**. Eu vou registrar um autoload.
+
+- Crio uma outra função anonima e insiro pra dentro da **spl_autoload_register(function(){})** ele tem um parâmetro que vai ser chamado o nome que você inserir. **spl_autoload_register(function($class){});**.
+
+- Para verificar se o arquivo existe fazemos uma validação...
+```
+<?php
+
+spl_autoload_register(function($class){
+      
+      //Vai fazer uma verificação se o arquivo existe
+   if(file_exists('classes/'.$class.'.php')){
+    require 'classes/'.$class.'.php';
+   }
+});
+
+$m = new Matematica();
+echo $m->somar(10,20);
+```
+
+### Procedimento para o autoload __DIR__ vai inserir essa variavel global dir que vai pegar o proprio diretório do arquivo que estou que no caso é a raiz do projeto no final insiro a pasta com uma / no final. Exemplo:
+
+**$baseDir=__DIR__.'/classes/';**
+
+- Para trocar a barra \ para essa / inserimos na mesma função.
+## No PHP a barra assim \ seguido de aspas '\' como fosse literalizando a propria aspa então inserimos '\\' para formar uma barra só
+
+```
+//Meu index.php
+
+<?php
+
+require 'autoload.php';
+
+use \matematica\Basica;
+
+$m = new matematica\Basica();
+echo $m->somar(10,20);
+```
+### Autoload.php
+```
+// autoload.php
+<?php
+
+spl_autoload_register(function($class){
+  $baseDir = __DIR__.'/classes/';
+  
+  $file = $baseDir.str_replace('\\', '/', $class).'.php';
+
+  if(file_exists($file)) {
+      require $file;
+  }
+});
+```
+### classes/fotos
+upload.php
+
+CRIO ESSAS PASTA NO DIRETÓRIO RAIZ;
+### classes/matematica
+Basica.php
+
+```
+// foto/Upload.php
+<?php 
+namespace foto;
+
+class Upload {
+
+}
+```
+
+```
+// matematica/Basica.php
+<?php 
+namespace matematica;
+
+class Basica{
+    public function somar($x, $y){
+        return $x + $y; 
+    }
+}
+```
 
