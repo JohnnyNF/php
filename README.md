@@ -1857,3 +1857,17 @@ class Basica{
 }
 ```
 
+
+## Conectando ao banco de dados com PDO 
+
+Para conectar no banco inserimos o código:
+
+1º - Tipo de banco que vai ser usado;
+2º - 
+3º - 
+
+```
+
+$variavel = new PDO("mysql:dbname = test;host")
+```
+
