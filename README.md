@@ -1862,12 +1862,32 @@ class Basica{
 
 Para conectar no banco inserimos o código:
 
-1º - Tipo de banco que vai ser usado;
-2º - 
-3º - 
+1º - Tipo de banco que vai ser usado. Exemplo: **mysql:**
+
+2º - Ao nome do banco de dados que estou utilizando. Exemplo: **:dbname=test;**
+
+3º - Aonde ele está funcionando **host=localhost**
+
+Em um outro parâmetro inserimos os seguinte.
+
+1º - Que vai fazer o user "root",""
+
 
 ```
-
-$variavel = new PDO("mysql:dbname = test;host")
+$variavel = new PDO("mysql:dbname = test;host=localhost", "root","")
 ```
+
+Para acessar o banco direto do codigo digitamos acessamos:
+```
+$variavel = new PDO("mysql:dbname = test;host=localhost", "root","")
+
+$sql = $variavel->query('SELECT * FROM usuarios');
+
+
+            //Fetch = Pegar os dados pra mim. ALL=Todos
+$dados = $sql->fetchAll(); =======> Para inserir uma associação digitamos 
+        $sql->fetchAll(PDO::FETCH_ASSOC)
+ 
+```
+
 
