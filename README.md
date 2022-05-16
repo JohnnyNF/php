@@ -1887,7 +1887,89 @@ $sql = $variavel->query('SELECT * FROM usuarios');
             //Fetch = Pegar os dados pra mim. ALL=Todos
 $dados = $sql->fetchAll(); =======> Para inserir uma associação digitamos 
         $sql->fetchAll(PDO::FETCH_ASSOC)
- 
 ```
 
+
+## Conceitos CRUD
+
+## Create: Inserindo dados com PDO (1/2)
+
+Para criarmos um CRUD temos que fazer outros procedimentos também 
+
+```
+<?php 
+require 'config.php';
+
+// Aqui selecionamos as variaveis que vou acessar 
+$name = filter_input(INPUT_POST, 'name');
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+// A verificação para ver se o nome e o email foi infomarmado e se estão corretos 
+// Para inserir um novo usuario fazemos o seguinte
+if($name && $email){
+ 
+ 
+
+} 
+// Caso contrario precisamos voltar para a minha pagina de adicionar e digitamos novamente os campos informados
+else {
+    header("Location: adicionar.php");
+    exit;
+}
+```
+---
+Para chamarmos o PDO utilizamos o PDO STATEMAN para deixar seguro e chamar a query
+
+- Ele vai montando aos porucos a query e depois executamos a query
+- Nós utilizamos o  **$variavel1 = $varaivel do PDO da config = prepare()**
+- Dentro da prepare( ) chamamos a query 
+    
+    $sql = $pdo->prepare("INSERT INTO usuarios (nome, email) VALUES(:name,:email)")
+- Logo após faço as associações de cada um dos itens **:name** ,**:email**.
+- Agora insiro um methodo de SQL chamado **bindValue**.
+
+### A $variavel que chamei o prepare()->**bindValue** tem dois parâmetros:
+
+1º bindValue()======> Que eu quero modificar pela minha variavel $name
+
+bindValue ele vai transformar no valor que ta na variavel $name e vai substituir por **:name**
+```
+$sql->bindValue(':name, $name);
+```
+
+
+---
+```
+<?php 
+require 'config.php';
+
+// Aqui selecionamos as variaveis que vou acessar 
+$name = filter_input(INPUT_POST, 'name');
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+// A verificação para ver se o nome e o email foi infomarmado e se estão corretos 
+// Para inserir um novo usuario fazemos o seguinte
+if($name && $email){
+ 
+    $sql = $pdo->prepare("INSERT INTO usuarios (nome, email) VALUES(:name, :email)")
+    
+    //Vou chamar a variavel $sql e tranformar os valores que está na variavel 
+    $sql->bindValue(':name, $name);
+    $sql->bindParam(':email', $email);
+    // Isso ira executar o banco para 
+    $sql->execute();
+
+    // Sempre que eu adicionar eu volto para meu index 
+    hea
+
+
+} 
+// Caso contrario precisamos voltar para a minha pagina de adicionar e digitamos novamente os campos informados
+else {
+    header("Location: adicionar.php");
+    exit;
+}
+```
 
